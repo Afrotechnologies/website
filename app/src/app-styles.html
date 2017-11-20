@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<!-- shared styles for all views -->
+<dom-module id="app-styles">
+  <template>
+    <style>
+      .info {
+        text-align: center;
+      }
+
+      .logo {
+        display: inline-block;
+        width: 75%;
+        max-width: 480px;
+        margin-top: 5%;
+      }
+
+      .coming-soon {
+        position: relative;
+        top: -2.5rem;
+      }
+
+      @media screen and (min-width: 640px) {
+        .info {
+          position: fixed;
+          top: 50%;
+          right: 2rem;
+          transform: translateY(-50%);
+        }
+
+        .logo {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+    </style>
+  </template>
+</dom-module>

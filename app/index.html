@@ -77,21 +77,41 @@
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
     <!-- Load your application shell -->
-    <link rel="import" href="src/my-app.html">
+    <link rel="import" href="src/app-shell.html">
 
     <!-- Add any global styles for body, document, etc. -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="import" href="src/app-shell.html">
     <style>
       body {
+        font-family: 'Ubuntu', sans-serif;
+        letter-spacing: 1px;
         margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
+        padding: 0;
         min-height: 100vh;
-        background-color: #eeeeee;
+        overflow-x: hidden;
+        background-color: #f0f0f0;
+        background-size: 140% auto;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-image: url('/images/bg.png');
+      }
+
+      @media (min-width: 640px) {
+        body {
+          background-size: 100% auto;
+        }
+      }
+
+      @media (min-width: 1140px) {
+        body {
+          background-size: 75% auto;
+        }
       }
     </style>
   </head>
   <body>
-    <my-app></my-app>
+    <app-shell></app-shell>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>

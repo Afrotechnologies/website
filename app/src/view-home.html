@@ -1,0 +1,26 @@
+<link rel="import" href="app-styles.html">
+<link rel="import" href="app-icons.html">
+
+<dom-module id="view-home">
+    <template>
+        <custom-style>
+            <style is="custom-style" include="app-styles"></style>
+        </custom-style>
+
+        <div class="info">
+            <img class="logo" src="images/slaying.png" title="Afro Technologies" alt="Afro Technologies" />
+            <p class="coming-soon">Coming Soon</p>
+            <!-- <ul class="social-media">
+                <li><a href="https://twitter.com/afrotech2017"><iron-icon icon="appicons:twitter"></iron-icon></a></li>
+            </ul> -->
+        </div>
+    </template>
+
+    <script>
+        class ViewHome extends Polymer.Element {
+            static get is() { return 'view-home'; }
+        }
+
+        window.customElements.define(ViewHome.is, ViewHome);
+    </script>
+</dom-module>

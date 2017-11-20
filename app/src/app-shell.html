@@ -1,0 +1,70 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components//iron-selector/iron-selector.html">
+<!-- <link rel="import" href="app-styles.html"> -->
+
+<dom-module id="app-shell">
+  <template>
+    <!-- <custom-style>
+      <style is="custom-style" include="app-styles"></style>
+    </custom-style> -->
+
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}">
+    </app-route>
+
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="404" role="main">
+      <view-home name="home" class="view"></view-home>
+      <view-error name="error"></view-error>
+    </iron-pages>
+  </template>
+  <script>
+    class AppShell extends Polymer.Element {
+
+      static get is() { return 'app-shell'; }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      _routePageChanged(page) {
+        // Polymer 2.0 will call with `undefined` on initialization.
+        // Ignore until we are properly called with a string.
+        if (page === undefined) return;
+
+        this.page = page || 'home';
+      }
+
+      _pageChanged(page) {
+        var resolvedPageUrl = this.resolveUrl('view-' + page + '.html');
+        //console.log(resolvedPageUrl);
+        Polymer.importHref(
+          resolvedPageUrl,
+          null,
+          this._showPage404.bind(this),
+          true
+        );
+      }
+
+      _showPage404() {
+        this.page = 'error';
+      }
+    }
+
+    window.customElements.define(AppShell.is, AppShell);
+  </script>
+</dom-module>
