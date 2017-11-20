@@ -3,14 +3,14 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const routes = require('./routes/index');
+const routes = require('./routes/index');
 const app = express();
 
 const env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
-// view engine setup
+// setup views
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -18,10 +18,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build/es5-bundled')));
+// if dev, if prod use build
+app.use(express.static(path.join(__dirname, 'app')));
+//app.use(express.static(path.join(__dirname, 'build/es5-bundled')));
 //app.use(express.static(path.join(__dirname, 'node_modules')));
 
-//app.use('/', routes);
+// set up routes
+// app.use('/', routes);
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {

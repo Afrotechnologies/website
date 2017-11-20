@@ -1,7 +1,7 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "Afro Technologies",
+  "short_name": "Afrotech",
+  "description": "Inspiring African Americans to success and excell at tech.",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",

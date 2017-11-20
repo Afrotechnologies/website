@@ -1,19 +1,19 @@
 {
-  "entrypoint": "index.html",
-  "shell": "src/my-app.html",
+  "entrypoint": "app/index.html",
+  "shell": "app/src/my-app.html",
   "fragments": [
-    "src/my-view1.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
-    "src/my-view404.html"
+    "app/src/my-view1.html",
+    "app/src/my-view2.html",
+    "app/src/my-view3.html",
+    "app/src/my-view404.html"
   ],
   "sources": [
-    "src/**/*",
-    "images/**/*"
+    "app/src/**/*",
+    "app/images/**/*"
   ],
   "extraDependencies": [
-    "manifest.json",
-    "bower_components/webcomponentsjs/*.js"
+    "app/manifest.json",
+    "app/bower_components/webcomponentsjs/*.js"
   ],
   "lint": {
     "rules": ["polymer-2"]
